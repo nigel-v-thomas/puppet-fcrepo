@@ -1,0 +1,31 @@
+{
+  "name": "apache-manifoldcf",
+  "author": "nigel-v-thomas",
+  "description": "",
+  "license": "MIT License (MIT)",
+  "project_page": "",
+  "source": "",
+  "summary": "",
+  "version": "",
+  "checksums": {
+    "LICENSE": "333e24857b1644d052ec87fbb95827e9",
+    "Modulefile": "5734be87aa2728b579539de5a359672f",
+    "README.md": "038c44c58a382f4fc02a695e9f0196e1",
+    "manifests\\db.pp": "4d107f35b3425468cdceb36380fa6809",
+    "manifests\\init.pp": "c307eba9e70b63d85456e4004730603e",
+    "manifests\\install.pp": "0306b25329ab239f038109b06b76f2e4",
+    "manifests\\params.pp": "3b9005fa1554395e1c29479caa076152",
+    "manifests\\service.pp": "7e371e5b357ff297c75db5a3c3a3fbd5",
+    "manifests\\setup_script_env.pp": "6fe35e6a96c79b3d2bfa371fd1a6ec37",
+    "manifests\\setup_war_context.pp": "c590091162cafdc5cda620fb528faae9",
+    "manifests\\unpack_wars.pp": "e0537744d15ff4f34ac958e1a71bfd60",
+    "spec\\spec.opts": "eb547b31184006017b3f6d6e2f1bbc12",
+    "spec\\spec_helper.rb": "967bc25e920cdefa7c53fc433c3fc057",
+    "templates\\initialise-with-env.sh.erb": "7a5bfcd78693805cdc4fe36c295ed332",
+    "templates\\manifold-cf.erb": "b016657718fca61b90034780368a0242",
+    "templates\\properties.xml.erb": "1f57b805bd7e2c2859327fae711eed10",
+    "templates\\tomcat-context-template.xml.erb": "4ed0a90e7ce2c50b836297e77c3a436e",
+    "tests\\init.pp": "3235f6c503ba2f8a4783df69a8a730e5"
+  },
+  "dependencies": []
+}
