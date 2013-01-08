@@ -1,12 +1,12 @@
 #Install Options
 #Mon Jan 07 20:45:33 UTC 2013
-ri.enabled=false
+ri.enabled=true
 messaging.enabled=true
 apia.auth.required=false
 database.jdbcDriverClass=org.apache.derby.jdbc.EmbeddedDriver
 upstream.auth.enabled=false
 ssl.available=false
-database.jdbcURL=jdbc\:derby\:/usr/share/fedora-3.6.2/derby/fedora3;create\=true
+database.jdbcURL=jdbc\:derby\:<%= @home_dir %>/derby/fedora3;create\=true
 messaging.uri=vm\:(broker\:(tcp\://localhost\:61616))
 database.password=fedoraAdmin
 database.username=fedoraAdmin
@@ -20,8 +20,8 @@ database=included
 database.driver=included
 fedora.serverContext=fedora
 llstore.type=akubra-fs
-tomcat.home=/usr/share/fedora-3.6.2//tomcat
-fedora.home=/usr/share/fedora-3.6.2/
+tomcat.home=<%= @home_dir %>/tomcat
+fedora.home=<%= @home_dir %>
 install.type=custom
 servlet.engine=included
 fedora.admin.pass=password

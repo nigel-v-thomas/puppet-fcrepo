@@ -5,6 +5,7 @@ class fcrepo::install (
   $fedora_user = $fcrepo::params::fedora_user,
   $fedora_user_home_dir = $fcrepo::params::fedora_user_home_dir,
   $java_home = $fcrepo::params::java_home,
+  $create_fedora_user = $fcrepo::params::create_fedora_user,
   ) inherits fcrepo::params {
   $tmp_dir = "/var/tmp"
   
@@ -14,7 +15,7 @@ class fcrepo::install (
     path => ["/bin", "/usr/bin", "/usr/sbin"],
     creates => $home_dir
   }
-   
+
   file {$home_dir:
     path    => $home_dir,
     ensure  => directory,
@@ -24,20 +25,24 @@ class fcrepo::install (
     require => [Exec["create_fcrepo_home_dir"]],
   }
 
-  file { "${fedora_user_home_dir}":
-    ensure => directory,
-    owner => "$fedora_user",
-  }
+ if $create_fedora_user {
+    # setup fedora user    
 
-  user {"$fedora_user":
-    ensure => present,
-    home => "${fedora_user_home_dir}",
-    before => File["$fedora_user_home_dir"],
-    name => "$fedora_user",
-    system => true,
-    shell => "/bin/bash",
-  }
+    file { "${fedora_user_home_dir}":
+      ensure => directory,
+      owner => "$fedora_user",
+    }
   
+    user {"$fedora_user":
+      ensure => present,
+      home => "${fedora_user_home_dir}",
+      before => File["$fedora_user_home_dir"],
+      name => "$fedora_user",
+      system => true,
+      shell => "/bin/bash",
+    }
+  }
+ 
   # Configure environment variables
   file {"${fedora_user_home_dir}/.pam_environment":
     ensure => file,

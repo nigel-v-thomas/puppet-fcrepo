@@ -6,7 +6,7 @@ A [puppet module](http://docs.puppetlabs.com) to setup [fedora-commons](http://w
 Features
 ========
  * Installs fedora based on install.properties (non interactive/silent install)
- * Sets up a configurable fedora user  and runs fedora as that user
+ * Install as a particular user, with option to create the required user (default creates a user fedora36 and installs as this user)
  * Includes a init.d script to run fedora as a service
 
 Setup vagrant
