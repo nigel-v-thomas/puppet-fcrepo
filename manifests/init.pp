@@ -28,5 +28,9 @@ class fcrepo (
     home_dir => $home_dir,
     package => $package,
   }
-  
+  class {
+    "fcrepo::service":
+    home_dir => $home_dir,
+    require => Class["fcrepo::install"]
+  }  
 }
