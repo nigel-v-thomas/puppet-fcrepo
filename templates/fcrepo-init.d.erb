@@ -1,0 +1,44 @@
+#!/bin/sh -e
+
+### BEGIN INIT INFO
+# Provides:             fcrepo fcrepo
+# Required-Start:       $local_fs $remote_fs $network $time
+# Required-Stop:        $local_fs $remote_fs $network $time
+# Should-Start:         $syslog
+# Should-Stop:          $syslog
+# Default-Start:        2 3 4 5
+# Default-Stop:         0 1 6
+# Short-Description:    Fedora commons init script 
+### END INIT INFO
+
+# Check files exist and read permission granted
+[ -x <%= @fc_start_full_path %> ] || echo "unable to execute <%= @fc_start_full_path %>" exit 0
+[ -x <%= @fc_stop_full_path %> ] || echo "unable to execute <%= @fc_stop_full_path %>" exit 0
+
+VERSION=0.1
+
+case "$1" in
+    start)
+        cd <%= @fc_base_dir %>
+        nohup sudo -u <%= fedora_user %> <%= @fc_start_full_path %> > <%= @fc_initd_log_dir %>/tomcat-start.log 2>&1 &
+        echo "Completed command with status" $?
+        
+        ;;
+    stop)
+        cd <%= @fc_base_dir %>
+        nohup sudo -u <%= fedora_user %> <%= @fc_stop_full_path %> > <%= @fc_initd_log_dir %>/tomcat-stop.log 2>&1 &
+        echo "Completed command with status" $?
+        
+        ;;
+    restart | force-reload | reload)
+        echo "Error: argument '$1' not supported" >&2
+        ;;
+    status)
+        status $VERSION
+        ;;
+    *)
+        echo "Usage: $0 {start|stop}"
+        exit 1
+        ;;
+esac
+exit 0
