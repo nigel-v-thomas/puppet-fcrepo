@@ -23,11 +23,13 @@ Usage
   
   Set the source url for the installer, this can be a local path or a url to the installer.
 
-      class {"fcrepo":
-        source_url => "/vagrant/fcrepo-installer-3.6.2.jar",
-        home_dir => $fedora_home_path,
-        require => Exec["apt-get update"],
-      }
+  class {"fcrepo":
+    source_url => "/vagrant/fcrepo-installer-3.6.2.jar",
+    home_dir => $fedora_home_path,
+    #create_fedora_user => false,
+    #fedora_user => "root",
+    #fedora_user_home_dir => "/root/",
+  }
 
   A copy of install properties is kept in the templates files, customise this for your own install.
 
