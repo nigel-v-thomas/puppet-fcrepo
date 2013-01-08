@@ -16,6 +16,8 @@ class fcrepo (
       $fedora_user = $fcrepo::params::fedora_user,
       $fedora_user_home_dir = $fcrepo::params::fedora_user_home_dir,
       $java_home = $fcrepo::params::java_home,
+      $enable_resource_index = $fcrepo::params::enable_resource_index,
+      $enable_external_resource_index = $fcrepo::params::enable_external_resource_index,
       $create_fedora_user = $fcrepo::params::create_fedora_user
       )inherits fcrepo::params {
 
@@ -32,6 +34,8 @@ class fcrepo (
     fedora_user => $fedora_user,
     create_fedora_user => $create_fedora_user,
     java_home => $java_home,
+    enable_resource_index => $enable_resource_index,
+    enable_external_resource_index => $enable_external_resource_index,
     fedora_user_home_dir => $fedora_user_home_dir
   }
 

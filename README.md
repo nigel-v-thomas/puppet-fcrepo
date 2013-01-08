@@ -26,6 +26,7 @@ Usage
   class {"fcrepo":
     source_url => "/vagrant/fcrepo-installer-3.6.2.jar",
     home_dir => $fedora_home_path,
+    enable_resource_index => false,
     #create_fedora_user => false,
     #fedora_user => "root",
     #fedora_user_home_dir => "/root/",

@@ -8,6 +8,8 @@ class fcrepo::params {
       $fedora_user_home_dir = "/home/fedora36"
       $fedora_user = "fedora36"
       $java_home = "/usr/lib/jvm/java-6-openjdk-amd64/"
+      $enable_resource_index = true
+      $enable_external_resource_index = true
       $create_fedora_user = true
     }
     default: {

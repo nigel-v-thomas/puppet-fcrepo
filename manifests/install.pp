@@ -6,6 +6,8 @@ class fcrepo::install (
   $fedora_user_home_dir = $fcrepo::params::fedora_user_home_dir,
   $java_home = $fcrepo::params::java_home,
   $create_fedora_user = $fcrepo::params::create_fedora_user,
+  $enable_resource_index = $fcrepo::params::enable_resource_index,
+  $enable_external_resource_index = $fcrepo::params::enable_external_resource_index,
   ) inherits fcrepo::params {
   $tmp_dir = "/var/tmp"
   
@@ -99,11 +101,19 @@ class fcrepo::install (
     require => File["${tmp_install_dir}/fcrepo-installer.jar"]
   }
 
-  exec {"java -jar fcrepo-installer.jar install.properties":
+  exec {"install-fedora":
+    command => "java -jar fcrepo-installer.jar install.properties",
     path => ["/bin", "/usr/bin", "/usr/sbin"],
     cwd => $tmp_install_dir,
     creates => "${home_dir}/install",
     require => File["${tmp_install_dir}/install.properties"],
     user => $fedora_user,
+  }
+
+  file {"${home_dir}/server/config/fedora.fcfg":
+    ensure => file,
+    owner => "$fedora_user",
+    content => template("fcrepo/fedora.fcfg.erb"),
+    require => Exec["install-fedora"],
   } 
 }
