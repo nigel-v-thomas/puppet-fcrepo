@@ -7,6 +7,7 @@ class fcrepo::params {
       $package = "fcrepo-installer-3.6.2"
       $fedora_user_home_dir = "/home/fedora36"
       $fedora_user = "fedora36"
+      $java_home = "/usr/lib/jvm/java-6-openjdk-amd64/"
     }
     default: {
       fail("Operating system $operatingsystem is not supported by the tomcat module")

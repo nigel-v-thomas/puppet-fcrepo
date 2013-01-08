@@ -4,6 +4,7 @@ class fcrepo::install (
   $package = $fcrepo::params::package,
   $fedora_user = $fcrepo::params::fedora_user,
   $fedora_user_home_dir = $fcrepo::params::fedora_user_home_dir,
+  $java_home = $fcrepo::params::java_home,
   ) inherits fcrepo::params {
   $tmp_dir = "/var/tmp"
   
@@ -36,7 +37,8 @@ class fcrepo::install (
     system => true,
     shell => "/bin/bash",
   }
-
+  
+  # Configure environment variables
   file {"${fedora_user_home_dir}/.pam_environment":
     ensure => file,
     content => template("fcrepo/.pam_environment.erb"),

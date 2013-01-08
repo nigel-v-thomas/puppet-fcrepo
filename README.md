@@ -1,12 +1,20 @@
 puppet-fcrepo
 =================
 
-A [puppet module](http://docs.puppetlabs.com) to setup [fedora-commons](http://www.fedora-commons.org/) on Ubuntu
+A [puppet module](http://docs.puppetlabs.com) to setup [fedora-commons](http://www.fedora-commons.org/), tested on Ubun 12.04
+
+Features
+========
+ * Installs fedora based on install.properties (non interactive/silent install)
+ * Sets up a configurable fedora user  and runs fedora as that user
+ * Includes a init.d script to run fedora as a service
 
 Setup vagrant
 ==============
 
 Follow instructions to download and install vagrant from http://vagrantup.com/v1/docs/getting-started/index.html
+Configure vagrant to use puppet..
+Add this as to the modules directory.
 
 Usage
 =====
